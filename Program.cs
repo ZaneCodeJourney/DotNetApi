@@ -61,16 +61,11 @@ else
     app.UseHttpsRedirection();
 }
 
-app.UseAuthorization();
-
 app.UseAuthentication();
 
+app.UseAuthorization();
+
 app.MapControllers();
-// app.MapGet("/weatherforecast", () =>
-// {
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
 
 app.Run();
 
