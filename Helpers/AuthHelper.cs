@@ -39,31 +39,31 @@ namespace DotnetAPI.Helpers
 
         public string CreateToken(int userId)
         {
-            Claim[] claims = new Claim[] {
+            Claim[] claims = [
                 new Claim("userId", userId.ToString())
-            };
+            ];
             
-string? tokenKeyString = _config.GetSection("AppSettings:TokenKey").Value;
+            string? tokenKeyString = _config.GetSection("AppSettings:TokenKey").Value;
 
-SymmetricSecurityKey tokenKey = new SymmetricSecurityKey(
-        Encoding.UTF8.GetBytes(
-            tokenKeyString != null ? tokenKeyString : ""
-        )
-    );
+            SymmetricSecurityKey tokenKey = new(
+                    Encoding.UTF8.GetBytes(
+                        tokenKeyString != null ? tokenKeyString : ""
+                    )
+                );
 
-            SigningCredentials credentials = new SigningCredentials(
+            SigningCredentials credentials = new(
                     tokenKey, 
                     SecurityAlgorithms.HmacSha512Signature
                 );
 
-            SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor()
+            SecurityTokenDescriptor descriptor = new()
                 {
                     Subject = new ClaimsIdentity(claims),
                     SigningCredentials = credentials,
                     Expires = DateTime.Now.AddDays(1)
                 };
 
-            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityTokenHandler tokenHandler = new();
 
             SecurityToken token = tokenHandler.CreateToken(descriptor);
 
@@ -82,16 +82,17 @@ SymmetricSecurityKey tokenKey = new SymmetricSecurityKey(
 
             byte[] passwordHash = GetPasswordHash(userForSetPassword.Password, passwordSalt);
 
+            Console.WriteLine("0x" + BitConverter.ToString(passwordHash).Replace("-",""));
+            Console.WriteLine(System.Text.Encoding.UTF8.GetString(passwordHash, 0, passwordHash.Length));
+            Console.WriteLine(System.Text.Encoding.UTF8.GetString(passwordHash));
+            Console.WriteLine(Convert.ToBase64String(passwordHash));
+
             string sqlAddAuth = @"EXEC TutorialAppSchema.spRegistration_Upsert
                 @Email = @EmailParam, 
                 @PasswordHash = @PasswordHashParam, 
                 @PasswordSalt = @PasswordSaltParam";
             
             DynamicParameters sqlParameters = new DynamicParameters();
-
-            // SqlParameter emailParameter = new SqlParameter("@EmailParam", SqlDbType.VarChar);
-            // emailParameter.Value = userForLogin.Email;
-            // sqlParameters.Add(emailParameter);
 
             sqlParameters.Add("@EmailParam", userForSetPassword.Email, DbType.String);
             sqlParameters.Add("@PasswordHashParam", passwordHash, DbType.Binary);
