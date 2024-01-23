@@ -9,7 +9,6 @@ This REST API, built with C# and .NET Core, can be used to manage users and post
 Here's a glimpse of the Api, running on Swagger UI
 
 ![Main View](public/ReadmeImage.png)
-_Dashboard of the application_
 
 ## Run the Project
 
