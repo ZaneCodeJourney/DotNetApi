@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This REST API, built with C# and .NET Core, can be used to manage users and posts in an organization. 
+Deployed on [dtcodeapi2.azurewebsites.net](dtcodeapi2.azurewebsites.net), this REST API, built with C# and .NET Core, can be used as a forum to manage users and posts in an organization. 
 
 ### Feature overview
 
