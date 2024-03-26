@@ -10,6 +10,36 @@ Here's a glimpse of the Api, running on Swagger UI
 
 ![Main View](public/ReadmeImage.png)
 
+### Authentication (AuthController):
+
+Register: New user registration with email and password validation.
+
+ResetPassword: Allows users to update their password.
+
+Login: User login with email and password; provides authentication token.
+
+RefreshToken: Generates a new authentication token for logged-in users.
+
+### Post Management (PostController):
+
+GetPosts: Retrieves posts with optional filters for post ID, user ID, and search terms.
+
+MyPosts: Fetches posts created by the authenticated user.
+
+UpsertPost: Creates a new or updates an existing post.
+
+DeletePost: Deletes a post by its ID.
+
+### User Management (UserCompleteController):
+
+TestConnection: Checks database connectivity.
+
+GetUsers: Retrieves users based on ID and active status.
+
+UpsertUser: Creates or updates user information.
+
+DeleteUser: Removes a user record by ID.
+
 ## Run the Project
 
 Once the dependencies are installed, you can run the project using Vite:
