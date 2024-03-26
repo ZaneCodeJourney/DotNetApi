@@ -1,19 +1,30 @@
-##
-## Visual Studio Code
-##
-.vscode/*
-!.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-# Microsoft Azure Web App publish settings. Comment the next line if you want to
-# checkin your Azure Web App publish settings, but sensitive information contained
-# in these scripts will be unencrypted
-PublishScripts/
-# Microsoft Azure Build Output
-csx/
-*.build.csdef
-# Microsoft Azure Emulator
-ecf/
-rcf/
+**/bin/
+**/obj/
+.vs/
+*.suo
+*.userprefs
+**/packages/*
+!**/packages/build/
+_ReSharper*/
+*ReSharper*
+*.nupkg
+**/publish/
+wwwroot/
+*.runtimeconfig.json
+*.xml
+*.json
+*.config
+*.csproj
+*.sln
+*.user
+*.aspnetcore.https
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+azure/
+appsettings.Development.json
+Properties/PublishProfiles/
+*.db
+*.sqlite
